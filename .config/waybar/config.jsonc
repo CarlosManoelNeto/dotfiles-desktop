@@ -1,0 +1,130 @@
+{
+  "layer": "top",
+  "passthrough": false,
+  "spacing": 0,
+  "reload_style_on_change": true,
+
+  "modules-left": ["group/group-left"],
+
+  "modules-center": ["group/group-center"],
+
+  "modules-right": ["group/group-right"],
+
+  "group/group-left": {
+    "orientation": "horizontal",
+    "modules": ["hyprland/workspaces", "custom/spotify", "tray"],
+  },
+
+  "group/group-center": {
+    "orientation": "horizontal",
+    "modules": ["clock"],
+  },
+
+  "group/group-right": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/updates",
+      "custom/wireplumber",
+      "group/group-end",
+      "group/group-power",
+    ],
+  },
+
+  "custom/spotify": {
+    "format": "{}",
+    "exec": "/usr/bin/python3 ~/.config/waybar/assets/mediaplayer.py --player spotify",
+    "return-type": "json",
+    "on-click": "playerctl -p spotify play-pause",
+    "on-scroll-up": "playerctl -p spotify next",
+    "on-scroll-down": "playerctl -p spotify previous",
+  },
+
+  "tray": {
+    "icon-size": 18,
+    "spacing": 6,
+  },
+
+  "clock": {
+    "format": "{:%a %d %b %H:%M}",
+    "tooltip": true,
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "format": {
+        "months": "<span color='#d79921'><b>{}</b></span>",
+        "days": "<span color='#ebdbb2'><b>{}</b></span>",
+        "weekdays": "<span color='#98971a'><b>{}</b></span>",
+        "today": "<span color='#cc241d'><b><u>{}</u></b></span>",
+      },
+    },
+    "actions": {
+      "on-click": "shift_reset",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down",
+    },
+  },
+
+  "custom/updates": {
+    "exec": "~/.config/waybar/assets/updates.sh",
+    "interval": 600,
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "kitty -e bash -c 'yay -Syu; read -n 1'",
+  },
+
+  "custom/wireplumber": {
+    "format": "{}",
+    "return-type": "json",
+    "interval": 2, // Aumentamos um pouco o intervalo para não sobrecarregar
+    "exec": "~/.config/waybar/assets/volume_bar.sh",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && pkill -RTMIN+1 waybar",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ --limit 1.0 && pkill -RTMIN+1 waybar",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && pkill -RTMIN+1 waybar",
+    "signal": 1,
+    "tooltip": true,
+  },
+
+  "group/group-end": {
+    "orientation": "horizontal",
+    "modules": ["network"],
+  },
+
+  "network": {
+    "interval": 60,
+    "format-wifi": " {essid}",
+    "format-ethernet": " {ifname}",
+    "format-disconnected": " disconnected",
+    "tooltip-format-ethernet": "{ifname}",
+    "tooltip-format-wifi": "{essid}",
+  },
+
+  "group/group-power": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power",
+      "transition-left-to-right": false,
+    },
+    "modules": ["custom/power", "custom/lock", "custom/reboot"],
+  },
+
+  "custom/lock": {
+    "format": "",
+    "tooltip": true,
+    "on-click": "systemctl suspend",
+  },
+
+  "custom/reboot": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "systemctl reboot",
+  },
+
+  "custom/power": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "systemctl poweroff",
+  },
+}

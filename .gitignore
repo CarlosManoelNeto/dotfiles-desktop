@@ -1,0 +1,18 @@
+# cache
+.cache/
+*.log
+
+# coisas temporárias
+*.tmp
+*.bak
+
+# possíveis dados sensíveis
+.ssh/
+gnupg/
+
+# node/python lixo (se tiver)
+node_modules/
+
+# thumbnails
+Thumbs.db
+.DS_Store

@@ -1,0 +1,3 @@
+﻿bibata-cursor-gruvbox-git
+gruvbox-dark-gtk
+noto-fonts-emoji
