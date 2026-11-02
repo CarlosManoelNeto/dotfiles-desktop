@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+export WINEPREFIX="/home/carlos/.local/share/wineprefixes/reskate-test"
+
+if command -v nvidia-smi >/dev/null 2>&1; then
+  GPU_NAME="$(nvidia-smi --query-gpu=name --format=csv,noheader 2>/dev/null | head -n1 || true)"
+  if grep -qi RTX <<<"$GPU_NAME"; then
+    export DXVK_ENABLE_NVAPI=1
+    export DXVK_NVAPI_DRS_SETTINGS="0x10E41E06=1,0x10E41E01=1,0x10E41DF3=0x00ffffff"
+  fi
+fi
+
+cd "/mnt/ssd/SteamLibrary/steamapps/common/Skate"
+exec wine ./ReSkateLauncher.exe --offline --no-update --log-level=info

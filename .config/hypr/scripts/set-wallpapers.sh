@@ -13,13 +13,13 @@ WALLPAPERS=(
 WP1=$(shuf -n 1 -e "${WALLPAPERS[@]}")
 WP2=$(shuf -n 1 -e "${WALLPAPERS[@]}")
 
-swww img "$WP1" \
+awww img "$WP1" \
   --outputs DP-1 \
   --transition-type grow \
   --transition-duration 1.2 \
   --transition-fps 60
 
-swww img "$WP2" \
+awww img "$WP2" \
   --outputs DP-2 \
   --transition-type grow \
   --transition-duration 1.2 \

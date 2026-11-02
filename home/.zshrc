@@ -28,3 +28,11 @@ export CHROME_EXECUTABLE=/usr/bin/brave
 export ANDROID_SDK_HOME=$HOME
 export ANDROID_AVD_HOME=$HOME/.android/avd
 
+
+# Unity CLI
+case ":${PATH}:" in *:"$HOME/.local/bin":*) ;; *) export PATH="$HOME/.local/bin:$PATH" ;; esac
+export PATH=~/.npm-global/bin:$PATH
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/carlos/.local/bin:$PATH"

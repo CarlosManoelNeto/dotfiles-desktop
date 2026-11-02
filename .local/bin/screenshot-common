@@ -1,0 +1,36 @@
+#!/bin/bash
+
+TMPFILE=$(mktemp --suffix=.png)
+
+cleanup() {
+    rm -f "$TMPFILE"
+}
+
+trap cleanup EXIT
+
+capture_and_edit() {
+    local MODE="$1"
+
+    case "$MODE" in
+        area)
+            grimblast save area "$TMPFILE" || exit 0
+            ;;
+        screen)
+            grimblast save screen "$TMPFILE" || exit 0
+            ;;
+        active)
+            grimblast save active "$TMPFILE" || exit 0
+            ;;
+    esac
+
+    satty \
+        --filename "$TMPFILE" \
+        --copy-command "wl-copy < \"$TMPFILE\""
+
+    wl-copy < "$TMPFILE"
+
+    notify-send \
+        -i "$TMPFILE" \
+        "Screenshot" \
+        "Imagem copiada para a área de transferência."
+}

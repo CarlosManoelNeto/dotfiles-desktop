@@ -1,0 +1,9 @@
+[general]
+
+fullscreen = false
+early-exit = false
+copy-command = "wl-copy"
+
+initial-tool = "pointer"
+
+corner-roundness = 10

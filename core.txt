@@ -1,35 +1,58 @@
-﻿hyprland
+# Compositor & Desktop Environment
+hyprland
+hypridle
+hyprlock
 waybar
-kitty
 rofi
 dunst
-swww
+kitty
+awww
 
+# Audio & Media Controls
 pipewire
 wireplumber
+pipewire-pulse
+pipewire-alsa
 pavucontrol
-
-networkmanager
-network-manager-applet
-
-xdg-desktop-portal-hyprland
-xdg-utils
-
-grim
-slurp
-wl-clipboard
-
-brightnessctl
+libpulse
 playerctl
 
+# Screenshots & Clipboard
+grim
+slurp
+satty
+wl-clipboard
+
+# File Manager & Utilities
 thunar
 thunar-archive-plugin
 thunar-volman
+brightnessctl
+curl
+jq
+pacman-contrib
+xdg-desktop-portal-hyprland
+xdg-utils
+networkmanager
+network-manager-applet
 
+# Waybar modules dependencies
+python
+python-gobject
+
+# Fonts & Icons
 ttf-jetbrains-mono-nerd
+noto-fonts-emoji
 papirus-icon-theme
 
+# Shell & CLI
 zsh
+zsh-autosuggestions
+zsh-syntax-highlighting
 starship
+fzf
 git
 neovim
+
+# Display Manager
+sddm

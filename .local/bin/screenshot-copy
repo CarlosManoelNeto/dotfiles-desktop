@@ -1,0 +1,16 @@
+#!/bin/bash
+
+TMPFILE=$(mktemp --suffix=.png)
+
+grimblast save area "$TMPFILE" || exit 0
+
+wl-copy < "$TMPFILE"
+
+notify-send \
+    -i "$TMPFILE" \
+    "Screenshot" \
+    "Imagem copiada."
+
+sleep 5
+
+rm "$TMPFILE"

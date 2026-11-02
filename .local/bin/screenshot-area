@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source ~/.local/bin/screenshot-common
+
+capture_and_edit area

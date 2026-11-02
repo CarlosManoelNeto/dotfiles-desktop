@@ -1,16 +1,11 @@
-android-sdk
-android-sdk-build-tools
-android-sdk-cmdline-tools-latest
-android-sdk-platform-tools
-bibata-cursor-gruvbox-git
+# Browser & Apps
 brave-bin
-grub-theme-minegrub-world-selection-git
-gruvbox-dark-gtk
-heroic-games-launcher-bin
-linuxtoys
-localsend-bin
-sklauncher-bin
 spotify
-visual-studio-code-bin
-yay
-yay-debug
+
+# Screenshots
+grimblast-git
+
+# Themes & Cursors
+bibata-cursor-gruvbox-git
+gruvbox-dark-gtk
+pixie-sddm-git
